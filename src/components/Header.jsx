@@ -1,10 +1,7 @@
 import PropTypes from 'prop-types';
-import { useMemo } from 'react';
 
-export const Header = ({ cart, removeFromCard, increaseQuantity, decreaseFromCart, clearCart }) => {
+export const Header = ({ cart, removeFromCard, increaseQuantity, decreaseFromCart, clearCart, isEmpty, cartTotal }) => {
 
-  const isEmpty = useMemo(() => cart.length === 0, [cart]);
-  const cartTotal = useMemo(() => cart.reduce((total, item) => total + (item.quantity * item.price), 0), [cart]);
 
   return (
     <header className="py-5 header">
@@ -99,5 +96,7 @@ Header.propTypes = {
   removeFromCard: PropTypes.func,
   increaseQuantity: PropTypes.func,
   decreaseFromCart: PropTypes.func,
-  clearCart: PropTypes.func
+  clearCart: PropTypes.func,
+  isEmpty: PropTypes.bool,
+  cartTotal: PropTypes.any
 }
